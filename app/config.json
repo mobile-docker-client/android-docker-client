@@ -1,0 +1,5 @@
+{
+  "groupId":"park.mail.ru",
+  "artifactId":"DockerApiSdk",
+  "library":"retrofit2"
+}
