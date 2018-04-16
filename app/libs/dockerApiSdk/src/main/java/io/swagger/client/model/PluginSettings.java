@@ -31,7 +31,7 @@ import java.util.List;
  * Settings that can be modified by users.
  */
 @ApiModel(description = "Settings that can be modified by users.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class PluginSettings {
   @SerializedName("Mounts")
   private List<PluginMount> mounts = new ArrayList<PluginMount>();

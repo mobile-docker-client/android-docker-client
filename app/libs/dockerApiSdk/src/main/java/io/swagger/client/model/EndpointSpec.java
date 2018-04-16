@@ -30,7 +30,7 @@ import java.util.List;
  * Properties that can be configured to access and load balance a service.
  */
 @ApiModel(description = "Properties that can be configured to access and load balance a service.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class EndpointSpec {
   /**
    * The mode of resolution to use for internal load balancing between tasks.

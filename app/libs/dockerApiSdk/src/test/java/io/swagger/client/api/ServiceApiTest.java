@@ -4,6 +4,7 @@ import io.swagger.client.ApiClient;
 import io.swagger.client.model.ErrorResponse;
 import io.swagger.client.model.Service;
 import io.swagger.client.model.ServiceCreateResponse;
+import io.swagger.client.model.ServiceSpec;
 import io.swagger.client.model.ServiceUpdateResponse;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +33,7 @@ public class ServiceApiTest {
      */
     @Test
     public void serviceCreateTest() {
-         body = null;
+        ServiceSpec body = null;
         String xRegistryAuth = null;
         // ServiceCreateResponse response = api.serviceCreate(body, xRegistryAuth);
 
@@ -102,7 +103,7 @@ public class ServiceApiTest {
     @Test
     public void serviceUpdateTest() {
         String id = null;
-         body = null;
+        ServiceSpec body = null;
         Integer version = null;
         String registryAuthFrom = null;
         String rollback = null;

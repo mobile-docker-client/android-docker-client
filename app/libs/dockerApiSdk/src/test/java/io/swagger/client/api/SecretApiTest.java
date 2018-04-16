@@ -32,7 +32,7 @@ public class SecretApiTest {
      */
     @Test
     public void secretCreateTest() {
-         body = null;
+        SecretSpec body = null;
         // IdResponse response = api.secretCreate(body);
 
         // TODO: test validations

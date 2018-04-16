@@ -27,7 +27,7 @@ import java.io.IOException;
  * Specification for the restart policy which applies to containers created as part of this service.
  */
 @ApiModel(description = "Specification for the restart policy which applies to containers created as part of this service.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class TaskSpecRestartPolicy {
   /**
    * Condition for restart.

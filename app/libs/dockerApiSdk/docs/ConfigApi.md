@@ -25,7 +25,7 @@ Create a config
 
 
 ConfigApi apiInstance = new ConfigApi();
- body = new null(); //  | 
+ConfigSpec body = new ConfigSpec(); // ConfigSpec | 
 try {
     IdResponse result = apiInstance.configCreate(body);
     System.out.println(result);
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [****](.md)|  | [optional]
+ **body** | [**ConfigSpec**](ConfigSpec.md)|  | [optional]
 
 ### Return type
 

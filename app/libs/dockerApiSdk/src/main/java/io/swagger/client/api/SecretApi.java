@@ -30,7 +30,7 @@ public interface SecretApi {
   })
   @POST("secrets/create")
   Call<IdResponse> secretCreate(
-    @retrofit2.http.Body  body
+    @retrofit2.http.Body SecretSpec body
   );
 
   /**

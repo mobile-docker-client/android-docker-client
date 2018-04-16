@@ -29,7 +29,7 @@ import java.util.List;
  * Specification for DNS related configurations in resolver configuration file (&#x60;resolv.conf&#x60;).
  */
 @ApiModel(description = "Specification for DNS related configurations in resolver configuration file (`resolv.conf`).")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class TaskSpecContainerSpecDNSConfig {
   @SerializedName("Nameservers")
   private List<String> nameservers = null;

@@ -32,7 +32,7 @@ public class ConfigApiTest {
      */
     @Test
     public void configCreateTest() {
-         body = null;
+        ConfigSpec body = null;
         // IdResponse response = api.configCreate(body);
 
         // TODO: test validations

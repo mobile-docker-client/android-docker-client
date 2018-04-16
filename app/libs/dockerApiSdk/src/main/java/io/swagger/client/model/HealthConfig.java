@@ -29,7 +29,7 @@ import java.util.List;
  * A test to perform to check that the container is healthy.
  */
 @ApiModel(description = "A test to perform to check that the container is healthy.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class HealthConfig {
   @SerializedName("Test")
   private List<String> test = null;
