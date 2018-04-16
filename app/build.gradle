@@ -40,7 +40,12 @@ swaggerSources {
         }
     }
 }
-
+ext{
+   dependencies{
+       testImplementation 'com.google.code.findbugs:jsr305:3.0.1'
+       implementation 'com.google.code.findbugs:jsr305:3.0.1'
+   }
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
