@@ -27,7 +27,7 @@ import java.io.IOException;
  * Optional configuration for the &#x60;tmpfs&#x60; type.
  */
 @ApiModel(description = "Optional configuration for the `tmpfs` type.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
 public class MountTmpfsOptions {
   @SerializedName("SizeBytes")
   private Long sizeBytes = null;

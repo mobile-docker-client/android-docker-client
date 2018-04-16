@@ -28,7 +28,7 @@ import java.io.IOException;
  * NodeStatus represents the status of a node.  It provides the current status of the node, as seen by the manager. 
  */
 @ApiModel(description = "NodeStatus represents the status of a node.  It provides the current status of the node, as seen by the manager. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
 public class NodeStatus {
   @SerializedName("State")
   private NodeState state = null;

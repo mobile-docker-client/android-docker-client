@@ -31,7 +31,7 @@ import java.io.IOException;
  * NodeDescription encapsulates the properties of the Node as reported by the agent. 
  */
 @ApiModel(description = "NodeDescription encapsulates the properties of the Node as reported by the agent. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
 public class NodeDescription {
   @SerializedName("Hostname")
   private String hostname = null;

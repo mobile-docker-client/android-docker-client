@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * ContainerInspectResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
 public class ContainerInspectResponse {
   @SerializedName("Id")
   private String id = null;

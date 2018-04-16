@@ -28,7 +28,7 @@ import java.io.IOException;
  * Defaults for creating tasks in this cluster.
  */
 @ApiModel(description = "Defaults for creating tasks in this cluster.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
 public class SwarmSpecTaskDefaults {
   @SerializedName("LogDriver")
   private SwarmSpecTaskDefaultsLogDriver logDriver = null;

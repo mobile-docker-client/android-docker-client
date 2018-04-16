@@ -28,7 +28,7 @@ import java.math.BigDecimal;
  * Specification for the update strategy of the service.
  */
 @ApiModel(description = "Specification for the update strategy of the service.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-15T21:07:44.853+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
 public class ServiceSpecUpdateConfig {
   @SerializedName("Parallelism")
   private Long parallelism = null;
