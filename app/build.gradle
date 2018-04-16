@@ -30,7 +30,7 @@ android {
 
 swaggerSources {
     dockerApiSdk {
-        inputFile = file('swagger.json')
+        inputFile = file('swagger.yaml')
 
         code {
             language = 'java'
@@ -41,9 +41,11 @@ swaggerSources {
     }
 }
 ext{
+   oltu_version = "1.0.1"
    dependencies{
        testImplementation 'com.google.code.findbugs:jsr305:3.0.1'
        implementation 'com.google.code.findbugs:jsr305:3.0.1'
+
    }
 }
 dependencies {

@@ -27,7 +27,7 @@ import java.io.IOException;
  * PortBinding represents a binding between a host IP address and a host port. 
  */
 @ApiModel(description = "PortBinding represents a binding between a host IP address and a host port. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
 public class PortBinding {
   @SerializedName("HostIp")
   private String hostIp = null;

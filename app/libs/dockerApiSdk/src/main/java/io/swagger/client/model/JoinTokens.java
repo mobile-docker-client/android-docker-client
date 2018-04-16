@@ -27,7 +27,7 @@ import java.io.IOException;
  * JoinTokens contains the tokens workers and managers need to join the swarm. 
  */
 @ApiModel(description = "JoinTokens contains the tokens workers and managers need to join the swarm. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
 public class JoinTokens {
   @SerializedName("Worker")
   private String worker = null;

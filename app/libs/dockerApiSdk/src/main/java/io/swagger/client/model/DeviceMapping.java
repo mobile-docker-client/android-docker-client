@@ -27,7 +27,7 @@ import java.io.IOException;
  * A device mapping between the host and container
  */
 @ApiModel(description = "A device mapping between the host and container")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
 public class DeviceMapping {
   @SerializedName("PathOnHost")
   private String pathOnHost = null;

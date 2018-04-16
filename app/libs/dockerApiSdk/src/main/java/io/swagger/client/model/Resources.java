@@ -33,7 +33,7 @@ import java.util.List;
  * A container&#39;s resources (cgroups config, ulimits, etc)
  */
 @ApiModel(description = "A container's resources (cgroups config, ulimits, etc)")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
 public class Resources {
   @SerializedName("CpuShares")
   private Integer cpuShares = null;

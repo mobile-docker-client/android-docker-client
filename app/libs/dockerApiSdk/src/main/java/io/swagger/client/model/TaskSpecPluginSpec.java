@@ -30,7 +30,7 @@ import java.util.List;
  * Invalid when specified with &#x60;ContainerSpec&#x60;. *(Experimental release only.)*
  */
 @ApiModel(description = "Invalid when specified with `ContainerSpec`. *(Experimental release only.)*")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
 public class TaskSpecPluginSpec {
   @SerializedName("Name")
   private String name = null;

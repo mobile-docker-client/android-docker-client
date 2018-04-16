@@ -28,7 +28,7 @@ import java.io.IOException;
  * ManagerStatus represents the status of a manager.  It provides the current status of a node&#39;s manager component, if the node is a manager. 
  */
 @ApiModel(description = "ManagerStatus represents the status of a manager.  It provides the current status of a node's manager component, if the node is a manager. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
 public class ManagerStatus {
   @SerializedName("Leader")
   private Boolean leader = false;
