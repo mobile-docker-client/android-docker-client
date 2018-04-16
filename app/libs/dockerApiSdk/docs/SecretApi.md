@@ -25,7 +25,7 @@ Create a secret
 
 
 SecretApi apiInstance = new SecretApi();
- body = new null(); //  | 
+SecretSpec body = new SecretSpec(); // SecretSpec | 
 try {
     IdResponse result = apiInstance.secretCreate(body);
     System.out.println(result);
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [****](.md)|  | [optional]
+ **body** | [**SecretSpec**](SecretSpec.md)|  | [optional]
 
 ### Return type
 

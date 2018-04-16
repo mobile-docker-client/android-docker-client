@@ -296,7 +296,7 @@ Create a container
 
 
 ContainerApi apiInstance = new ContainerApi();
- body = new null(); //  | Container to create
+ContainerInspectConfig body = new ContainerInspectConfig(); // ContainerInspectConfig | Container to create
 String name = "name_example"; // String | Assign the specified name to the container. Must match `/?[a-zA-Z0-9_-]+`.
 try {
     ContainerCreateResponse result = apiInstance.containerCreate(body, name);
@@ -311,7 +311,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [****](.md)| Container to create |
+ **body** | [**ContainerInspectConfig**](ContainerInspectConfig.md)| Container to create |
  **name** | **String**| Assign the specified name to the container. Must match &#x60;/?[a-zA-Z0-9_-]+&#x60;. | [optional]
 
 ### Return type
@@ -1098,7 +1098,7 @@ Change various configuration options of a container without having to recreate i
 
 ContainerApi apiInstance = new ContainerApi();
 String id = "id_example"; // String | ID or name of the container
- update = new null(); //  | 
+ContainerUpdateConfig update = new ContainerUpdateConfig(); // ContainerUpdateConfig | 
 try {
     ContainerUpdateResponse result = apiInstance.containerUpdate(id, update);
     System.out.println(result);
@@ -1113,7 +1113,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| ID or name of the container |
- **update** | [****](.md)|  |
+ **update** | [**ContainerUpdateConfig**](ContainerUpdateConfig.md)|  |
 
 ### Return type
 

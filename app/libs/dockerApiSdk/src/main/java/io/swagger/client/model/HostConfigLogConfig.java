@@ -30,7 +30,7 @@ import java.util.Map;
  * The logging configuration for this container
  */
 @ApiModel(description = "The logging configuration for this container")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class HostConfigLogConfig {
   /**
    * Gets or Sets type

@@ -30,7 +30,7 @@ public interface ConfigApi {
   })
   @POST("configs/create")
   Call<IdResponse> configCreate(
-    @retrofit2.http.Body  body
+    @retrofit2.http.Body ConfigSpec body
   );
 
   /**

@@ -31,7 +31,7 @@ import java.util.Map;
  * Optional configuration for the &#x60;volume&#x60; type.
  */
 @ApiModel(description = "Optional configuration for the `volume` type.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class MountVolumeOptions {
   @SerializedName("NoCopy")
   private Boolean noCopy = false;

@@ -10,10 +10,12 @@ import okhttp3.ResponseBody;
 
 import io.swagger.client.model.ContainerChangeResponseItem;
 import io.swagger.client.model.ContainerCreateResponse;
+import io.swagger.client.model.ContainerInspectConfig;
 import io.swagger.client.model.ContainerInspectResponse;
 import io.swagger.client.model.ContainerPruneResponse;
 import io.swagger.client.model.ContainerSummary;
 import io.swagger.client.model.ContainerTopResponse;
+import io.swagger.client.model.ContainerUpdateConfig;
 import io.swagger.client.model.ContainerUpdateResponse;
 import io.swagger.client.model.ContainerWaitResponse;
 import io.swagger.client.model.ErrorResponse;
@@ -120,7 +122,7 @@ public interface ContainerApi {
   })
   @POST("containers/create")
   Call<ContainerCreateResponse> containerCreate(
-    @retrofit2.http.Body  body, @retrofit2.http.Query("name") String name
+    @retrofit2.http.Body ContainerInspectConfig body, @retrofit2.http.Query("name") String name
   );
 
   /**
@@ -382,7 +384,7 @@ public interface ContainerApi {
   })
   @POST("containers/{id}/update")
   Call<ContainerUpdateResponse> containerUpdate(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body  update
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ContainerUpdateConfig update
   );
 
   /**

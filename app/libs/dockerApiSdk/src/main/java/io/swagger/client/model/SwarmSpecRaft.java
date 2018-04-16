@@ -27,7 +27,7 @@ import java.io.IOException;
  * Raft configuration.
  */
 @ApiModel(description = "Raft configuration.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class SwarmSpecRaft {
   @SerializedName("SnapshotInterval")
   private Integer snapshotInterval = null;

@@ -11,6 +11,7 @@ import okhttp3.ResponseBody;
 import io.swagger.client.model.ErrorResponse;
 import io.swagger.client.model.Service;
 import io.swagger.client.model.ServiceCreateResponse;
+import io.swagger.client.model.ServiceSpec;
 import io.swagger.client.model.ServiceUpdateResponse;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public interface ServiceApi {
   })
   @POST("services/create")
   Call<ServiceCreateResponse> serviceCreate(
-    @retrofit2.http.Body  body, @retrofit2.http.Header("X-Registry-Auth") String xRegistryAuth
+    @retrofit2.http.Body ServiceSpec body, @retrofit2.http.Header("X-Registry-Auth") String xRegistryAuth
   );
 
   /**
@@ -114,7 +115,7 @@ public interface ServiceApi {
   })
   @POST("services/{id}/update")
   Call<ServiceUpdateResponse> serviceUpdate(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body  body, @retrofit2.http.Query("version") Integer version, @retrofit2.http.Query("registryAuthFrom") String registryAuthFrom, @retrofit2.http.Query("rollback") String rollback, @retrofit2.http.Header("X-Registry-Auth") String xRegistryAuth
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ServiceSpec body, @retrofit2.http.Query("version") Integer version, @retrofit2.http.Query("registryAuthFrom") String registryAuthFrom, @retrofit2.http.Query("rollback") String rollback, @retrofit2.http.Header("X-Registry-Auth") String xRegistryAuth
   );
 
 }

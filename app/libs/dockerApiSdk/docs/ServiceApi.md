@@ -26,7 +26,7 @@ Create a service
 
 
 ServiceApi apiInstance = new ServiceApi();
- body = new null(); //  | 
+ServiceSpec body = new ServiceSpec(); // ServiceSpec | 
 String xRegistryAuth = "xRegistryAuth_example"; // String | A base64-encoded auth configuration for pulling from private registries. [See the authentication section for details.](#section/Authentication)
 try {
     ServiceCreateResponse result = apiInstance.serviceCreate(body, xRegistryAuth);
@@ -41,7 +41,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [****](.md)|  |
+ **body** | [**ServiceSpec**](ServiceSpec.md)|  |
  **xRegistryAuth** | **String**| A base64-encoded auth configuration for pulling from private registries. [See the authentication section for details.](#section/Authentication) | [optional]
 
 ### Return type
@@ -262,7 +262,7 @@ Update a service
 
 ServiceApi apiInstance = new ServiceApi();
 String id = "id_example"; // String | ID or name of service.
- body = new null(); //  | 
+ServiceSpec body = new ServiceSpec(); // ServiceSpec | 
 Integer version = 56; // Integer | The version number of the service object being updated. This is required to avoid conflicting writes.
 String registryAuthFrom = "spec"; // String | If the X-Registry-Auth header is not specified, this parameter indicates where to find registry authorization credentials. The valid values are `spec` and `previous-spec`.
 String rollback = "rollback_example"; // String | Set to this parameter to `previous` to cause a server-side rollback to the previous service spec. The supplied spec will be ignored in this case.
@@ -281,7 +281,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| ID or name of service. |
- **body** | [****](.md)|  |
+ **body** | [**ServiceSpec**](ServiceSpec.md)|  |
  **version** | **Integer**| The version number of the service object being updated. This is required to avoid conflicting writes. |
  **registryAuthFrom** | **String**| If the X-Registry-Auth header is not specified, this parameter indicates where to find registry authorization credentials. The valid values are &#x60;spec&#x60; and &#x60;previous-spec&#x60;. | [optional] [default to spec]
  **rollback** | **String**| Set to this parameter to &#x60;previous&#x60; to cause a server-side rollback to the previous service spec. The supplied spec will be ignored in this case. | [optional]

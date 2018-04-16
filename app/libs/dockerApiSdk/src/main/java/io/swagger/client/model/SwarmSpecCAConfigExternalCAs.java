@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * SwarmSpecCAConfigExternalCAs
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class SwarmSpecCAConfigExternalCAs {
   /**
    * Protocol for communication with the external CA (currently only &#x60;cfssl&#x60; is supported).

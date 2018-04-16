@@ -27,7 +27,7 @@ import java.io.IOException;
  * Address represents an IPv4 or IPv6 IP address.
  */
 @ApiModel(description = "Address represents an IPv4 or IPv6 IP address.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class Address {
   @SerializedName("Addr")
   private String addr = null;

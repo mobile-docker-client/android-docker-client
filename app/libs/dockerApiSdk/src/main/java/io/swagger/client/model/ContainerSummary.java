@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * ContainerSummary
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class ContainerSummary extends ArrayList<ContainerSummaryInner> {
 
   @Override

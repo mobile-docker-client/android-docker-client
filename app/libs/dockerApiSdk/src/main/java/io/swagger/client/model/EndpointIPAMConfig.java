@@ -29,7 +29,7 @@ import java.util.List;
  * EndpointIPAMConfig represents an endpoint&#39;s IPAM configuration. 
  */
 @ApiModel(description = "EndpointIPAMConfig represents an endpoint's IPAM configuration. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T04:24:49.247+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
 public class EndpointIPAMConfig {
   @SerializedName("IPv4Address")
   private String ipv4Address = null;

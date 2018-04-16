@@ -3,10 +3,12 @@ package io.swagger.client.api;
 import io.swagger.client.ApiClient;
 import io.swagger.client.model.ContainerChangeResponseItem;
 import io.swagger.client.model.ContainerCreateResponse;
+import io.swagger.client.model.ContainerInspectConfig;
 import io.swagger.client.model.ContainerInspectResponse;
 import io.swagger.client.model.ContainerPruneResponse;
 import io.swagger.client.model.ContainerSummary;
 import io.swagger.client.model.ContainerTopResponse;
+import io.swagger.client.model.ContainerUpdateConfig;
 import io.swagger.client.model.ContainerUpdateResponse;
 import io.swagger.client.model.ContainerWaitResponse;
 import io.swagger.client.model.ErrorResponse;
@@ -111,7 +113,7 @@ public class ContainerApiTest {
      */
     @Test
     public void containerCreateTest() {
-         body = null;
+        ContainerInspectConfig body = null;
         String name = null;
         // ContainerCreateResponse response = api.containerCreate(body, name);
 
@@ -340,7 +342,7 @@ public class ContainerApiTest {
     @Test
     public void containerUpdateTest() {
         String id = null;
-         update = null;
+        ContainerUpdateConfig update = null;
         // ContainerUpdateResponse response = api.containerUpdate(id, update);
 
         // TODO: test validations
