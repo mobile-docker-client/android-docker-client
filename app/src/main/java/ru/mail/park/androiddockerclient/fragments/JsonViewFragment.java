@@ -15,7 +15,7 @@ import java.util.List;
 import ru.mail.park.androiddockerclient.R;
 
 
-public class ContainersInspectFragment extends Fragment {
+public class JsonViewFragment extends Fragment {
 
 
     private static final String ARG_DATASET = "dataset";
@@ -26,11 +26,11 @@ public class ContainersInspectFragment extends Fragment {
 
     private RecyclerView mRecylerView;
 
-    public ContainersInspectFragment() {
+    public JsonViewFragment() {
     }
 
-    public static ContainersInspectFragment newInstance(ArrayList<DataNode> dataset) {
-        ContainersInspectFragment fragment = new ContainersInspectFragment();
+    public static JsonViewFragment newInstance(ArrayList<DataNode> dataset) {
+        JsonViewFragment fragment = new JsonViewFragment();
         Bundle args = new Bundle();
         args.putParcelableArrayList(ARG_DATASET, dataset);
         fragment.setArguments(args);
@@ -56,7 +56,7 @@ public class ContainersInspectFragment extends Fragment {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new ContainersInspectRecyclerViewAdapter(mDataset, mListener));
+            recyclerView.setAdapter(new JsonViewFragmentRecyclerViewAdapter(mDataset, mListener));
             mRecylerView = recyclerView;
         }
 
@@ -82,10 +82,14 @@ public class ContainersInspectFragment extends Fragment {
     }
 
     public void onExpanded(final int idx, final int size) {
-       mRecylerView.getAdapter().notifyItemRangeInserted(idx, size);
+        mRecylerView.getAdapter().notifyItemRangeInserted(idx + 1, size);
+        mRecylerView.getAdapter().notifyItemChanged(idx);
+
     }
+
     public void onCollapsed(final int idx, final int size) {
-        mRecylerView.getAdapter().notifyItemRangeRemoved(idx, size);
+        mRecylerView.getAdapter().notifyItemRangeRemoved(idx + 1, size);
+        mRecylerView.getAdapter().notifyItemChanged(idx);
     }
 
     public interface OnListFragmentInteractionListener {

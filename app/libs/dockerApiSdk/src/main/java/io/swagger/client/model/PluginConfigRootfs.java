@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * PluginConfigRootfs
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-17T00:16:49.279+04:00")
 public class PluginConfigRootfs {
   @SerializedName("type")
   private String type = null;

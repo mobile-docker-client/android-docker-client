@@ -36,7 +36,7 @@ import java.util.Map;
  * User modifiable swarm configuration.
  */
 @ApiModel(description = "User modifiable swarm configuration.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-17T00:16:49.279+04:00")
 public class SwarmSpec {
   @SerializedName("Name")
   private String name = null;

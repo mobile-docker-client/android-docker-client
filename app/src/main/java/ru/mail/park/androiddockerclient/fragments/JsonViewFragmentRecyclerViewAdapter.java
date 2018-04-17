@@ -13,16 +13,16 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.mail.park.androiddockerclient.R;
-import ru.mail.park.androiddockerclient.fragments.ContainersInspectFragment.OnListFragmentInteractionListener;
+import ru.mail.park.androiddockerclient.fragments.JsonViewFragment.OnListFragmentInteractionListener;
 
 
-public class ContainersInspectRecyclerViewAdapter extends RecyclerView.Adapter<ContainersInspectRecyclerViewAdapter.ViewHolder> {
+public class JsonViewFragmentRecyclerViewAdapter extends RecyclerView.Adapter<JsonViewFragmentRecyclerViewAdapter.ViewHolder> {
 
     private final List<DataNode> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public ContainersInspectRecyclerViewAdapter(List<DataNode> items,
-                                                OnListFragmentInteractionListener listener) {
+    public JsonViewFragmentRecyclerViewAdapter(List<DataNode> items,
+                                               OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -38,8 +38,8 @@ public class ContainersInspectRecyclerViewAdapter extends RecyclerView.Adapter<C
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.bind(position, mValues.get(position));
-        holder.setExpandListener(v -> mListener.onDataNodeClick(holder.mPosition, mValues));
+        holder.bind(mValues.get(position));
+        holder.setExpandListener(v -> mListener.onDataNodeClick(holder.getAdapterPosition(),mValues));
     }
 
     @Override
@@ -60,7 +60,7 @@ public class ContainersInspectRecyclerViewAdapter extends RecyclerView.Adapter<C
         ImageButton button;
 
         private DataNode mItem;
-        private int mPosition;
+
 
         public ViewHolder(View view) {
             super(view);
@@ -68,9 +68,8 @@ public class ContainersInspectRecyclerViewAdapter extends RecyclerView.Adapter<C
 
         }
 
-        void bind(final int pos, DataNode dataNode) {
+        void bind(DataNode dataNode) {
             mItem = dataNode;
-            mPosition = pos;
 
             if (dataNode.getKey() != null) {
                 mKey.setText(dataNode.getKey());
@@ -82,12 +81,14 @@ public class ContainersInspectRecyclerViewAdapter extends RecyclerView.Adapter<C
                 mValue.setText(mItem.getValue());
                 button.setVisibility(View.GONE);
             } else {
+                mValue.setText(null);
                 Boolean isExpanded = dataNode.getExpanded();
                 if (isExpanded) {
-                    button.setImageResource(R.drawable.expand_button_up);
-                } else {
                     button.setImageResource(R.drawable.expand_button_down);
+                } else {
+                    button.setImageResource(R.drawable.expand_button_up);
                 }
+                button.setVisibility(View.VISIBLE);
             }
         }
 

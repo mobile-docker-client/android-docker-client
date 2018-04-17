@@ -27,7 +27,7 @@ import java.io.IOException;
  * change item in response to ContainerChanges operation
  */
 @ApiModel(description = "change item in response to ContainerChanges operation")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-17T00:16:49.279+04:00")
 public class ContainerChangeResponseItem {
   @SerializedName("Path")
   private String path = null;

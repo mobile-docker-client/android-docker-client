@@ -29,7 +29,7 @@ import java.util.List;
  * Describes a permission the user has to accept upon installing the plugin.
  */
 @ApiModel(description = "Describes a permission the user has to accept upon installing the plugin.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-17T00:16:49.279+04:00")
 public class PluginPrivilegeItem {
   @SerializedName("Name")
   private String name = null;

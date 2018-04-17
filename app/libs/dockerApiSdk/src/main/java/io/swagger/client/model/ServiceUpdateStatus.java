@@ -27,7 +27,7 @@ import java.io.IOException;
  * The status of a service update.
  */
 @ApiModel(description = "The status of a service update.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T23:55:34.685+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-17T00:16:49.279+04:00")
 public class ServiceUpdateStatus {
   /**
    * Gets or Sets state
