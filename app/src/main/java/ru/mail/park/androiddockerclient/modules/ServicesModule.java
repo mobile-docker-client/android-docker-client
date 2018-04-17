@@ -11,6 +11,7 @@ import ru.mail.park.androiddockerclient.mappers.DataNodeMapper;
 import ru.mail.park.androiddockerclient.mappers.IDataNodeMapper;
 import ru.mail.park.androiddockerclient.services.ContainersService;
 import ru.mail.park.androiddockerclient.services.IAsyncRequestHandler;
+import ru.mail.park.androiddockerclient.services.JsonViewFragmentService;
 
 @Module
 public class ServicesModule {
@@ -23,7 +24,7 @@ public class ServicesModule {
 
     @Singleton
     @Provides
-    public IDataNodeMapper provideContainerInspectMapper() {
-        return new DataNodeMapper(new Gson());
+    public JsonViewFragmentService provideJsonViewFragmentService(IDataNodeMapper mapper){
+        return new JsonViewFragmentService(mapper);
     }
 }

@@ -27,7 +27,7 @@ import java.io.IOException;
  * Parameters related to encryption-at-rest.
  */
 @ApiModel(description = "Parameters related to encryption-at-rest.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-17T00:16:49.279+04:00")
 public class SwarmSpecEncryptionConfig {
   @SerializedName("AutoLockManagers")
   private Boolean autoLockManagers = null;

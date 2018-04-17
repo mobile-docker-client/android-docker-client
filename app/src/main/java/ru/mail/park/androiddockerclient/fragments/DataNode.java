@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DataNode implements Parcelable {
     private Boolean isExpandable;
@@ -108,4 +109,18 @@ public class DataNode implements Parcelable {
         return childes;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DataNode)) return false;
+        DataNode dataNode = (DataNode) o;
+        return Objects.equals(getKey(), dataNode.getKey()) &&
+                Objects.equals(getValue(), dataNode.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getKey(), getValue());
+    }
 }

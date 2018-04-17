@@ -6,8 +6,6 @@
     android:name="ru.mail.park.androiddockerclient.fragments.ContainersInspectFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-    tools:context=".fragments.ContainersInspectFragment"
+    tools:context=".fragments.JsonViewFragment"
     tools:listitem="@layout/fragment_containersinspect" />

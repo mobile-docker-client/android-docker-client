@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * ServiceEndpointVirtualIPs
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-17T00:16:49.279+04:00")
 public class ServiceEndpointVirtualIPs {
   @SerializedName("NetworkID")
   private String networkID = null;

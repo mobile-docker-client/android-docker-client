@@ -27,7 +27,7 @@ import java.io.IOException;
  * The state of the container.
  */
 @ApiModel(description = "The state of the container.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-17T00:16:49.279+04:00")
 public class ContainerInspectResponseState {
   /**
    * The status of the container. For example, &#x60;\&quot;running\&quot;&#x60; or &#x60;\&quot;exited\&quot;&#x60;. 

@@ -27,7 +27,7 @@ import java.io.IOException;
  * Response to an API call that returns just an Id
  */
 @ApiModel(description = "Response to an API call that returns just an Id")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T10:27:43.808+04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-17T00:16:49.279+04:00")
 public class IdResponse {
   @SerializedName("Id")
   private String id = null;

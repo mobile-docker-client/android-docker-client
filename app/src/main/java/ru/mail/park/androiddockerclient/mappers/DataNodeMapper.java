@@ -37,7 +37,7 @@ public class DataNodeMapper implements IDataNodeMapper {
         } else if (elem.isJsonObject()) {
             return new DataNode(true,
                     false,
-                    null,
+                    key,
                     null,
                     mapToDataNodes(elem.getAsJsonObject()));
         } else if (elem.isJsonArray()) {
