@@ -35,16 +35,26 @@ public class DataNodeMapper implements IDataNodeMapper {
                     elem.toString(),
                     null);
         } else if (elem.isJsonObject()) {
+            List<DataNode> nodes = mapToDataNodes(elem.getAsJsonObject());
+            if (nodes.size() == 0) {
+                return null;
+            }
             return new DataNode(true,
                     false,
                     key,
                     null,
-                    mapToDataNodes(elem.getAsJsonObject()));
+                    nodes);
         } else if (elem.isJsonArray()) {
             JsonArray array = elem.getAsJsonArray();
             List<DataNode> arrayNodes = new ArrayList<>();
             for (JsonElement arrayEntry : array) {
-                arrayNodes.add(jsonElemToDataNode(null, arrayEntry));
+                DataNode node = jsonElemToDataNode(null, arrayEntry);
+                if (node != null) {
+                    arrayNodes.add(node);
+                }
+            }
+            if (arrayNodes.size() == 0) {
+                return null;
             }
             return new DataNode(false,
                     false,
@@ -52,7 +62,7 @@ public class DataNodeMapper implements IDataNodeMapper {
                     null,
                     arrayNodes);
         } else {
-            return new DataNode(false, false, null, null, null);
+            return null;
         }
     }
 
@@ -60,17 +70,22 @@ public class DataNodeMapper implements IDataNodeMapper {
         ArrayList<DataNode> result = new ArrayList<>();
         JsonObject rawJson = gson.toJsonTree(source, clazz).getAsJsonObject();
         for (Map.Entry<String, JsonElement> entry : rawJson.entrySet()) {
-            result.add(entryToDataNode(entry));
+            DataNode node = entryToDataNode(entry);
+            if (node != null) {
+                result.add(node);
+            }
         }
         return result;
     }
 
     public <V> List<DataNode> mapToDataNodes(V source) {
-
         List<DataNode> result = new ArrayList<>();
         JsonObject rawJson = gson.toJsonTree(source).getAsJsonObject();
         for (Map.Entry<String, JsonElement> entry : rawJson.entrySet()) {
-            result.add(entryToDataNode(entry));
+            DataNode node = entryToDataNode(entry);
+            if (node != null) {
+                result.add(node);
+            }
         }
 
         return result;
