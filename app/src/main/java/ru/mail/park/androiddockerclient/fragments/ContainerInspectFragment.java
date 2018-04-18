@@ -22,6 +22,7 @@ import ru.mail.park.androiddockerclient.R;
 import ru.mail.park.androiddockerclient.interfaces.OnDataNodeRecyclerViewListener;
 import ru.mail.park.androiddockerclient.mappers.IDataNodeMapper;
 import ru.mail.park.androiddockerclient.services.ContainersFragmentsDataProvider;
+import ru.mail.park.androiddockerclient.services.TabDataFiltersProvider;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -36,7 +37,11 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
     @Inject
     IDataNodeMapper mapper;
 
+    @Inject
+    TabDataFiltersProvider dataFiltersProvider;
+
     private static final String ARG_CONTAINER_ID = "container_id";
+    private static final String ARG_FILTER_KEY = "filter_key";
 
     private String mContainerId;
 
@@ -53,11 +58,13 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
     public ContainerInspectFragment() {
     }
 
-    public static ContainerInspectFragment newInstance(String contId) {
+    public static ContainerInspectFragment newInstance(String contId, String filterKey) {
         ContainerInspectFragment fragment = new ContainerInspectFragment();
         Bundle args = new Bundle();
 
         args.putString(ARG_CONTAINER_ID, contId);
+        args.putString(ARG_FILTER_KEY, filterKey);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -69,6 +76,10 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
         Bundle bundle = getArguments();
         if (bundle != null) {
             mContainerId = bundle.getString(ARG_CONTAINER_ID);
+            String filterKey = bundle.getString(ARG_FILTER_KEY);
+            if (filterKey != null) {
+                mDataFilter = dataFiltersProvider.getFilter(filterKey);
+            }
             mDataset = null;
         }
     }
@@ -83,19 +94,19 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
         dataProvider.containerInspect(mContainerId, true,
                 responseData -> {
                     mDataset = mapper.mapToDataNodes(responseData, ContainerInspectResponse.class);
-                    Iterable<DataNode> datasetView;
+
 
                     if (mDataFilter != null) {
-                        datasetView = Iterables.filter(mDataset, mDataFilter);
-                    } else {
-                        datasetView = mDataset;
+                        List<DataNode> filtered = new ArrayList<>();
+                        Iterables.addAll(filtered, Iterables.filter(mDataset, mDataFilter));
+                        mDataset = filtered;
                     }
 
                     mRecyclerView.post(() -> {
                         Context context = mRecyclerView.getContext();
                         loading_bar.setVisibility(View.INVISIBLE);
                         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-                        mRecyclerView.setAdapter(new JsonViewFragmentRecyclerViewAdapter(datasetView, this));
+                        mRecyclerView.setAdapter(new JsonViewFragmentRecyclerViewAdapter(mDataset, this));
                     });
                     return null;
                 },
@@ -135,7 +146,7 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
     }
 
     @Override
-    public void onDataNodeClick(int position, Iterable<DataNode> dataset) {
+    public Iterable<DataNode> onDataNodeClick(int position, Iterable<DataNode> dataset) {
         DataNode node = Iterables.get(dataset, position);
 
         Iterable<DataNode> childes = node.getChildes();
@@ -150,16 +161,12 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
             Iterables.addAll(childesList, childes);
             mDataset.addAll(position + 1, childesList);
             onExpanded(position, childesList.size());
-
         } else {
             mDataset.subList(position + 1, position + 1 + node.getChildes().size()).clear();
             node.setExpanded(false);
             onCollapsed(position, Iterables.size(childes));
         }
+        return mDataset;
 
-    }
-
-    public void setFilter(Predicate<DataNode> filter) {
-        mDataFilter = filter;
     }
 }

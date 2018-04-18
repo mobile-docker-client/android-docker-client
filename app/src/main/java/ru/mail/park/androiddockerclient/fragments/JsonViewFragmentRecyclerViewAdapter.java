@@ -16,14 +16,13 @@ import ru.mail.park.androiddockerclient.interfaces.OnDataNodeRecyclerViewListene
 
 public class JsonViewFragmentRecyclerViewAdapter extends RecyclerView.Adapter<JsonViewFragmentRecyclerViewAdapter.ViewHolder> {
 
-    private final Iterable<DataNode> mValues;
+    private Iterable<DataNode> mValues;
     private final OnDataNodeRecyclerViewListener mListener;
 
     public JsonViewFragmentRecyclerViewAdapter(Iterable<DataNode> items,
                                                OnDataNodeRecyclerViewListener listener) {
         mValues = items;
         mListener = listener;
-
     }
 
     @NonNull
@@ -38,7 +37,9 @@ public class JsonViewFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Js
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
         holder.bind(Iterables.get(mValues, position));
-        holder.setExpandListener(v -> mListener.onDataNodeClick(holder.getAdapterPosition(), mValues));
+        holder.setExpandListener(v -> {
+            mValues = mListener.onDataNodeClick(holder.getAdapterPosition(), mValues);
+        });
     }
 
     @Override
@@ -82,7 +83,7 @@ public class JsonViewFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Js
             } else {
                 mValue.setText(null);
                 Boolean isExpanded = dataNode.getExpanded();
-                if (isExpanded) {
+                if (!isExpanded) {
                     button.setImageResource(R.drawable.expand_button_down);
                 } else {
                     button.setImageResource(R.drawable.expand_button_up);

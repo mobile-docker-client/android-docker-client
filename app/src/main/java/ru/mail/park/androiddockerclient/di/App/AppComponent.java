@@ -12,6 +12,7 @@ import ru.mail.park.androiddockerclient.fragments.JsonViewFragmentRecyclerViewAd
         {
                 CacheModule.class,
                 DataNodeModule.class,
+                TabsModule.class
         })
 public interface AppComponent {
 

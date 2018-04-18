@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TabDataFiltersProvider {
 
-    ConcurrentHashMap<String, Predicate<DataNode>> fitersRegister;
+    ConcurrentHashMap<String, Predicate<DataNode>> fitersRegister = new ConcurrentHashMap<>();
 
     public Predicate<DataNode> getFilter(String tab) {
         return fitersRegister.get(tab);

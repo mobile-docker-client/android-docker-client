@@ -14,7 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ru.mail.park.androiddockerclient.fragments.ContainerInspectFragment;
+import ru.mail.park.androiddockerclient.fragments.ContainerInspectFragmentPager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (menuItem.getItemId()) {
                         case R.id.nav_containers:
-                            Fragment fragment = ContainerInspectFragment.newInstance("a7eff1b246c1203b20fef06134aa6b3d10e64d48d3398d7e1a2c6f52a2867523");
+                            Fragment fragment = ContainerInspectFragmentPager.newInstance("a7eff1b246c1203b20fef06134aa6b3d10e64d48d3398d7e1a2c6f52a2867523");
                             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                             fragmentTransaction.replace(R.id.container, fragment);
                             fragmentTransaction.commitAllowingStateLoss();
