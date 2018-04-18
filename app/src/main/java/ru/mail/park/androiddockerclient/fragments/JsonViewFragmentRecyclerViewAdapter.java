@@ -13,16 +13,16 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.mail.park.androiddockerclient.R;
-import ru.mail.park.androiddockerclient.fragments.JsonViewFragment.OnListFragmentInteractionListener;
+import ru.mail.park.androiddockerclient.interfaces.OnDataNodeRecyclerViewListener;
 
 
 public class JsonViewFragmentRecyclerViewAdapter extends RecyclerView.Adapter<JsonViewFragmentRecyclerViewAdapter.ViewHolder> {
 
     private final List<DataNode> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final OnDataNodeRecyclerViewListener mListener;
 
     public JsonViewFragmentRecyclerViewAdapter(List<DataNode> items,
-                                               OnListFragmentInteractionListener listener) {
+                                               OnDataNodeRecyclerViewListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -39,7 +39,7 @@ public class JsonViewFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Js
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.bind(mValues.get(position));
-        holder.setExpandListener(v -> mListener.onDataNodeClick(holder.getAdapterPosition(),mValues));
+        holder.setExpandListener(v -> mListener.onDataNodeClick(holder.getAdapterPosition(), mValues));
     }
 
     @Override
