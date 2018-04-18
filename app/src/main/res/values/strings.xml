@@ -12,9 +12,65 @@
     <string name="settings_menu_item">Settings</string>
     <string name="error_fragment_create">Error: can\'t get container\'s data</string>
 
-    <string name="host_config">Host</string>
-    <string name="state">State</string>
-    <string name="network">Network</string>
-    <string name="summary">Summary</string>
+    <string name="container_host_tab_name">Host</string>
+    <string name="container_network_tab_name">Network</string>
+    <string name="container_summary_tab_name">Summary</string>
+    <string name="images_summary_tab_name">Summary</string>
+    <string name="images_container_tab_name">Container</string>
+    <string name="images_config_tab_name">Config</string>
+
+    <string-array name="containers_tabs">
+        <item>@string/container_summary_tab_name</item>
+        <item>@string/container_host_tab_name</item>
+        <item>@string/container_network_tab_name</item>
+    </string-array>
+
+    <string-array name="container_summary_allowed_keys">
+        <item>Id</item>
+        <item>Created</item>
+        <item>Path</item>
+        <item>Args</item>
+        <item>GraphDriver</item>
+        <item>Config</item>
+        <item>Image</item>
+        <item>Name</item>
+        <item>Mounts</item>
+        <item>Created</item>
+    </string-array>
+    <string-array name="container_host_allowed_keys">
+        <item>HostConfig</item>
+        <item>HostnamePath </item>
+        <item>HostsPath</item>
+    </string-array>
+    <string-array name="container_networks_allowed_keys">
+        <item>NetworkSettings</item>
+    </string-array>
+
+    <string-array name="images_tabs">
+        <item>@string/images_summary_tab_name</item>
+        <item>@string/images_container_tab_name</item>
+        <item>@string/images_config_tab_name</item>
+    </string-array>
+
+    <string-array name="image_summary_allowed_keys">
+        <item>Id</item>
+        <item>Container</item>
+        <item>Comment</item>
+        <item>Os</item>
+        <item>Architecture</item>
+        <item>Parent</item>
+        <item>RepoDigests</item>
+        <item>RepoTags</item>
+        <item>DockerVersion</item>
+        <item>VirtualSize</item>
+        <item>Size</item>
+        <item>Created</item>
+    </string-array>
+    <string-array name="image_config_allowed_keys">
+        <item>Config</item>
+    </string-array>
+    <string-array name="image_container_allowed_keys">
+        <item>ContainerConfig</item>
+    </string-array>
 
 </resources>

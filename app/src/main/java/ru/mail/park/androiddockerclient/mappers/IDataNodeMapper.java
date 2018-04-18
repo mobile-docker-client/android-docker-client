@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import ru.mail.park.androiddockerclient.fragments.DataNode;
+import ru.mail.park.androiddockerclient.adapters.jsonView.DataNode;
 
 public interface IDataNodeMapper {
 

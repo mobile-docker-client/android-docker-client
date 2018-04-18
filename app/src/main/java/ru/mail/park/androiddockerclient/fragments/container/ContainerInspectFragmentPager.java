@@ -1,4 +1,4 @@
-package ru.mail.park.androiddockerclient.fragments;
+package ru.mail.park.androiddockerclient.fragments.container;
 
 
 import android.os.Bundle;
@@ -10,18 +10,17 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import javax.inject.Inject;
+
+import butterknife.BindArray;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import ru.mail.park.androiddockerclient.Application;
 import ru.mail.park.androiddockerclient.R;
-import ru.mail.park.androiddockerclient.services.TabDataFiltersProvider;
-
-import javax.inject.Inject;
-import java.util.List;
-import java.util.Set;
+import ru.mail.park.androiddockerclient.filters.DataNodeKeyFilter;
+import ru.mail.park.androiddockerclient.services.FiltersRegistry;
 
 public class ContainerInspectFragmentPager extends Fragment {
 
@@ -32,20 +31,29 @@ public class ContainerInspectFragmentPager extends Fragment {
 
 
     @Inject
-    TabDataFiltersProvider tabsDataFiletersProvider;
+    FiltersRegistry filtersRegistry;
 
     private String mContainerId;
 
-    List<String> tabs;
+    @BindArray(R.array.containers_tabs)
+    String[] tabs;
 
-    @BindString(R.string.summary)
+    @BindArray(R.array.container_summary_allowed_keys)
+    String[] summaryAllowedKeys;
+
+    @BindArray(R.array.container_host_allowed_keys)
+    String[] hostAllowedKeys;
+
+    @BindArray(R.array.container_networks_allowed_keys)
+    String[] networksAllowedKeys;
+
+    @BindString(R.string.container_summary_tab_name)
     String summaryTab;
 
-    @BindString(R.string.host_config)
+    @BindString(R.string.container_host_tab_name)
     String hostTab;
 
-
-    @BindString(R.string.network)
+    @BindString(R.string.container_network_tab_name)
     String networkTab;
 
     public ContainerInspectFragmentPager() {
@@ -77,27 +85,13 @@ public class ContainerInspectFragmentPager extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_container_inspect_fragment_pager, container, false);
+        View view = inflater.inflate(R.layout.container_inspect_pager, container, false);
         ButterKnife.bind(this, view);
-        tabs = Lists.newArrayList(summaryTab, hostTab, networkTab);
-        Set<String> allowedHostKeys = Sets.newHashSet("HostConfig", "HostnamePath", "HostsPath");
-        Set<String> allowedSummaryKeys = Sets.newHashSet("Id", "Created", "Path", "Args", "GraphDriver", "Config");
-        Set<String> allowedNetworkKeys = Sets.newHashSet("NetworkSettings");
 
-        tabsDataFiletersProvider.registerFilter(summaryTab, input -> {
-            String key = input.getKey();
-            return key != null && allowedSummaryKeys.contains(key);
-        });
+        filtersRegistry.registerFilter(summaryTab, new DataNodeKeyFilter(summaryAllowedKeys));
+        filtersRegistry.registerFilter(hostTab, new DataNodeKeyFilter(hostAllowedKeys));
+        filtersRegistry.registerFilter(networkTab, new DataNodeKeyFilter(networksAllowedKeys));
 
-        tabsDataFiletersProvider.registerFilter(hostTab, input -> {
-            String key = input.getKey();
-            return key != null && allowedHostKeys.contains(key);
-        });
-
-        tabsDataFiletersProvider.registerFilter(networkTab, input -> {
-            String key = input.getKey();
-            return key != null && allowedNetworkKeys.contains(key);
-        });
         pager.setAdapter(new ContainerInspectPageAdapter(getFragmentManager()));
         return view;
     }
@@ -110,7 +104,7 @@ public class ContainerInspectFragmentPager extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            String tab = tabs.get(position);
+            String tab = tabs[position];
             ContainerInspectFragment fragment = ContainerInspectFragment.newInstance(mContainerId, tab);
             return fragment;
         }
@@ -118,12 +112,12 @@ public class ContainerInspectFragmentPager extends Fragment {
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
-            return tabs.get(position);
+            return tabs[position];
         }
 
         @Override
         public int getCount() {
-            return tabs.size();
+            return tabs.length;
         }
     }
 

@@ -1,4 +1,4 @@
-package ru.mail.park.androiddockerclient.fragments;
+package ru.mail.park.androiddockerclient.fragments.container;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,10 +19,12 @@ import com.orhanobut.logger.Logger;
 import io.swagger.client.model.ContainerInspectResponse;
 import ru.mail.park.androiddockerclient.Application;
 import ru.mail.park.androiddockerclient.R;
+import ru.mail.park.androiddockerclient.adapters.jsonView.DataNode;
+import ru.mail.park.androiddockerclient.adapters.jsonView.JsonViewFragmentRecyclerViewAdapter;
 import ru.mail.park.androiddockerclient.interfaces.OnDataNodeRecyclerViewListener;
 import ru.mail.park.androiddockerclient.mappers.IDataNodeMapper;
 import ru.mail.park.androiddockerclient.services.ContainersFragmentsDataProvider;
-import ru.mail.park.androiddockerclient.services.TabDataFiltersProvider;
+import ru.mail.park.androiddockerclient.services.FiltersRegistry;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
     IDataNodeMapper mapper;
 
     @Inject
-    TabDataFiltersProvider dataFiltersProvider;
+    FiltersRegistry dataFiltersProvider;
 
     private static final String ARG_CONTAINER_ID = "container_id";
     private static final String ARG_FILTER_KEY = "filter_key";
@@ -88,7 +90,7 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_containersinspect_list, container, false);
+        View view = inflater.inflate(R.layout.jsonview, container, false);
         ButterKnife.bind(this, view);
         loading_bar.setVisibility(View.VISIBLE);
         dataProvider.containerInspect(mContainerId, true,

@@ -1,4 +1,4 @@
-package ru.mail.park.androiddockerclient.fragments;
+package ru.mail.park.androiddockerclient.adapters.jsonView;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

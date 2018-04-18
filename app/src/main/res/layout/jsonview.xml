@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        tools:context=".fragments.ContainerInspectFragment"
+        tools:context=".fragments.container.ContainerInspectFragment"
         tools:listitem="@layout/fragment_containersinspect" />
 
     <ProgressBar
