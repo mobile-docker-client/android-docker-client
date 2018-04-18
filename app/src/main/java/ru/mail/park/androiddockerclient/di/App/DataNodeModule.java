@@ -1,4 +1,4 @@
-package ru.mail.park.androiddockerclient.modules;
+package ru.mail.park.androiddockerclient.di.App;
 
 import com.google.gson.Gson;
 

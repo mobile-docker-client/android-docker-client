@@ -8,10 +8,10 @@ import java.util.concurrent.ExecutorService;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class AsyncRequestHandler implements IAsyncRequestHandler{
+public class AsyncTaskHandler implements IAsyncTaskHandler {
     private ExecutorService executorService;
 
-    public AsyncRequestHandler(ExecutorService executorService) {
+    public AsyncTaskHandler(ExecutorService executorService) {
         this.executorService = executorService;
     }
 
@@ -32,6 +32,10 @@ public class AsyncRequestHandler implements IAsyncRequestHandler{
                     }
                 }
         );
+    }
+
+    public void executeInBackground(Runnable runnable) {
+        executorService.execute(runnable);
     }
 
 }
