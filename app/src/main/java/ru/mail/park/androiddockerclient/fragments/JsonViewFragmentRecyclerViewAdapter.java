@@ -7,26 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.google.common.collect.Iterables;
 import ru.mail.park.androiddockerclient.R;
 import ru.mail.park.androiddockerclient.interfaces.OnDataNodeRecyclerViewListener;
 
 
 public class JsonViewFragmentRecyclerViewAdapter extends RecyclerView.Adapter<JsonViewFragmentRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DataNode> mValues;
+    private final Iterable<DataNode> mValues;
     private final OnDataNodeRecyclerViewListener mListener;
 
-    public JsonViewFragmentRecyclerViewAdapter(List<DataNode> items,
+    public JsonViewFragmentRecyclerViewAdapter(Iterable<DataNode> items,
                                                OnDataNodeRecyclerViewListener listener) {
         mValues = items;
         mListener = listener;
-    }
 
+    }
 
     @NonNull
     @Override
@@ -38,13 +36,14 @@ public class JsonViewFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Js
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.bind(mValues.get(position));
+
+        holder.bind(Iterables.get(mValues, position));
         holder.setExpandListener(v -> mListener.onDataNodeClick(holder.getAdapterPosition(), mValues));
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return Iterables.size(mValues);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

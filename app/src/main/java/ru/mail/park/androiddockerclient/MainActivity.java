@@ -3,24 +3,20 @@ package ru.mail.park.androiddockerclient;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-
-import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ru.mail.park.androiddockerclient.services.ContainerFragmentsProvider;
+import ru.mail.park.androiddockerclient.fragments.ContainerInspectFragment;
 
 public class MainActivity extends AppCompatActivity {
-
-    @Inject
-    ContainerFragmentsProvider service;
 
     FragmentManager fragmentManager;
 
@@ -61,7 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (menuItem.getItemId()) {
                         case R.id.nav_containers:
-                            service.onCreateInspectFragment(fragmentManager, "a7eff1b246c1203b20fef06134aa6b3d10e64d48d3398d7e1a2c6f52a2867523", navigationView);
+                            Fragment fragment = ContainerInspectFragment.newInstance("a7eff1b246c1203b20fef06134aa6b3d10e64d48d3398d7e1a2c6f52a2867523");
+                            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.container, fragment);
+                            fragmentTransaction.commitAllowingStateLoss();
                             break;
 
                         default:

@@ -10,5 +10,9 @@
     <string name="secrets_menu_item">Secrets</string>
     <string name="servers_menu_item">Servers</string>
     <string name="settings_menu_item">Settings</string>
+    <string name="error_fragment_create">Error: can\'t get container\'s data</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

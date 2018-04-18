@@ -8,33 +8,56 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ProgressBar;
+import android.widget.Toast;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Ordering;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import com.orhanobut.logger.Logger;
+import io.swagger.client.model.ContainerInspectResponse;
+import ru.mail.park.androiddockerclient.Application;
 import ru.mail.park.androiddockerclient.R;
 import ru.mail.park.androiddockerclient.interfaces.OnDataNodeRecyclerViewListener;
+import ru.mail.park.androiddockerclient.mappers.IDataNodeMapper;
+import ru.mail.park.androiddockerclient.services.ContainersFragmentsDataProvider;
+
+import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ContainerInspectFragment extends Fragment implements OnDataNodeRecyclerViewListener {
 
+    @Inject
+    ContainersFragmentsDataProvider dataProvider;
 
-    private static final String ARG_DATASET = "dataset";
+    @Inject
+    IDataNodeMapper mapper;
 
-    private List<DataNode> mDataset;
+    private static final String ARG_CONTAINER_ID = "container_id";
 
-    private RecyclerView mRecylerView;
+    private String mContainerId;
+
+    @BindView(R.id.list)
+    RecyclerView mRecyclerView;
+
+    @BindView(R.id.loading_bar)
+    ProgressBar loading_bar;
+
+    private volatile List<DataNode> mDataset;
+
+    private Predicate<DataNode> mDataFilter;
 
     public ContainerInspectFragment() {
     }
 
-    public static ContainerInspectFragment newInstance(ArrayList<DataNode> dataset) {
+    public static ContainerInspectFragment newInstance(String contId) {
         ContainerInspectFragment fragment = new ContainerInspectFragment();
         Bundle args = new Bundle();
-        args.putParcelableArrayList(ARG_DATASET, dataset);
+
+        args.putString(ARG_CONTAINER_ID, contId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,9 +65,11 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Application.getProfileComponent().inject(this);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            mDataset = bundle.getParcelableArrayList(ARG_DATASET);
+            mContainerId = bundle.getString(ARG_CONTAINER_ID);
+            mDataset = null;
         }
     }
 
@@ -53,15 +78,34 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_containersinspect_list, container, false);
+        ButterKnife.bind(this, view);
+        loading_bar.setVisibility(View.VISIBLE);
+        dataProvider.containerInspect(mContainerId, true,
+                responseData -> {
+                    mDataset = mapper.mapToDataNodes(responseData, ContainerInspectResponse.class);
+                    Iterable<DataNode> datasetView;
 
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new JsonViewFragmentRecyclerViewAdapter(mDataset, this));
-            mRecylerView = recyclerView;
-        }
+                    if (mDataFilter != null) {
+                        datasetView = Iterables.filter(mDataset, mDataFilter);
+                    } else {
+                        datasetView = mDataset;
+                    }
 
+                    mRecyclerView.post(() -> {
+                        Context context = mRecyclerView.getContext();
+                        loading_bar.setVisibility(View.INVISIBLE);
+                        mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+                        mRecyclerView.setAdapter(new JsonViewFragmentRecyclerViewAdapter(datasetView, this));
+                    });
+                    return null;
+                },
+                response -> {
+                    loading_bar.setVisibility(View.INVISIBLE);
+                    Logger.e(response.message());
+                    Toast.makeText(getContext(), R.string.error_fragment_create, Toast.LENGTH_SHORT)
+                            .show();
+                    return null;
+                });
         return view;
     }
 
@@ -77,7 +121,7 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
     }
 
     public void onExpanded(final int parentIdx, final int size) {
-        RecyclerView.Adapter adapter = mRecylerView.getAdapter();
+        RecyclerView.Adapter adapter = mRecyclerView.getAdapter();
 
         adapter.notifyItemRangeInserted(parentIdx + 1, size);
         adapter.notifyItemChanged(parentIdx);
@@ -85,30 +129,37 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
     }
 
     public void onCollapsed(final int parentIdx, final int size) {
-        RecyclerView.Adapter adapter = mRecylerView.getAdapter();
-        mRecylerView.getAdapter().notifyItemRangeRemoved(parentIdx + 1, size);
+        RecyclerView.Adapter adapter = mRecyclerView.getAdapter();
+        mRecyclerView.getAdapter().notifyItemRangeRemoved(parentIdx + 1, size);
         adapter.notifyItemChanged(parentIdx);
     }
 
     @Override
-    public void onDataNodeClick(int position, List<DataNode> dataset) {
-        DataNode node = dataset.get(position);
+    public void onDataNodeClick(int position, Iterable<DataNode> dataset) {
+        DataNode node = Iterables.get(dataset, position);
 
-        List<DataNode> childes = node.getChildes();
+        Iterable<DataNode> childes = node.getChildes();
         if (!node.getExpanded()) {
             Ordering<DataNode> ordering = Ordering
                     .natural()
                     .onResultOf(DataNode::getKey)
                     .nullsLast();
             node.setExpanded(true);
-            Collections.sort(childes, ordering);
-            dataset.addAll(position + 1, childes);
-            onExpanded(position, childes.size());
+            childes = ordering.sortedCopy(childes);
+            List<DataNode> childesList = new ArrayList<>();
+            Iterables.addAll(childesList, childes);
+            mDataset.addAll(position + 1, childesList);
+            onExpanded(position, childesList.size());
+
         } else {
-            dataset.subList(position + 1, position + 1 + node.getChildes().size()).clear();
+            mDataset.subList(position + 1, position + 1 + node.getChildes().size()).clear();
             node.setExpanded(false);
-            onCollapsed(position, childes.size());
+            onCollapsed(position, Iterables.size(childes));
         }
 
+    }
+
+    public void setFilter(Predicate<DataNode> filter) {
+        mDataFilter = filter;
     }
 }

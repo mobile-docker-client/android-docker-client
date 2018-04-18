@@ -36,18 +36,18 @@ swaggerSources {
             language = 'java'
             configFile = file('config.json')
             outputDir = file('libs/dockerApiSdk')
-            components = [apis: true, supportingFiles: true, models:true, apisTests: false, modelsTests: false]
+            components = [apis: true, supportingFiles: true, models: true, apisTests: false, modelsTests: false]
         }
     }
 }
-ext{
-   dependencies{
-       testImplementation 'com.google.code.findbugs:jsr305:3.0.1'
-       implementation 'com.google.code.findbugs:jsr305:3.0.1'
-       implementation 'com.orhanobut:logger:2.2.0'
-       implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+ext {
+    dependencies {
+        testImplementation 'com.google.code.findbugs:jsr305:3.0.1'
+        implementation 'com.google.code.findbugs:jsr305:3.0.1'
+        implementation 'com.orhanobut:logger:2.2.0'
+        implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
-   }
+    }
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
