@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Android Docker Client</string>
     <string name="expand">expand_button</string>
+
+    <string name="containers_menu_item">Containers</string>
+    <string name="images_menu_item">Images</string>
+    <string name="volumes_menu_item">Volumes</string>
+    <string name="networks_menu_item">Networks</string>
+    <string name="configs_menu_item">Configs</string>
+    <string name="secrets_menu_item">Secrets</string>
+    <string name="servers_menu_item">Servers</string>
+    <string name="settings_menu_item">Settings</string>
+
 </resources>

@@ -87,9 +87,7 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
     public void onCollapsed(final int parentIdx, final int size) {
         RecyclerView.Adapter adapter = mRecylerView.getAdapter();
         mRecylerView.getAdapter().notifyItemRangeRemoved(parentIdx + 1, size);
-
         adapter.notifyItemChanged(parentIdx);
-        mRecylerView.getAdapter().notifyItemRangeRemoved(parentIdx + 1, size);
     }
 
     @Override
