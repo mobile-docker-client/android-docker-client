@@ -1,15 +1,15 @@
-<android.support.v4.view.ViewPager
-        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="ru.mail.park.androiddockerclient.fragments.container.ContainerInspectFragmentPager">
+<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ru.mail.park.docker.fragments.container.ContainerInspectFragmentPager">
 
     <android.support.v4.view.PagerTitleStrip
-            android:id="@+id/title_strip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"/>
+        android:id="@+id/title_strip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top" />
 
 </android.support.v4.view.ViewPager>
 

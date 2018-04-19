@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Docker Client</string>
+    <string name="app_name">Docker Client</string>
     <string name="expand">expand_button</string>
 
     <string name="containers_menu_item">Containers</string>

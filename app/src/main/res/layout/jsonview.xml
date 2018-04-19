@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_list_container"
-    android:name="ru.mail.park.androiddockerclient.fragments.ContainersInspectFragment"
+    android:name="ru.mail.park.docker.fragments.ContainersInspectFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:context=".fragments.container.ContainerInspectFragment"
-        tools:listitem="@layout/fragment_containersinspect" />
+        tools:listitem="@layout/fragment_containers_inspect" />
 
     <ProgressBar
         android:id="@+id/loading_bar"
