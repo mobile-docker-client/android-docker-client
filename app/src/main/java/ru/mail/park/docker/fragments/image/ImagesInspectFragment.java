@@ -145,11 +145,12 @@ public class ImagesInspectFragment extends Fragment implements OnDataNodeRecycle
         DataNode node = Iterables.get(dataset, position);
 
         Iterable<DataNode> childes = node.getChildes();
-        if (!node.getExpanded()) {
+        if (!node.getExpanded() && childes != null) {
             Ordering<DataNode> ordering = Ordering
                     .natural()
-                    .onResultOf(DataNode::getKey)
-                    .nullsLast();
+                    .nullsLast()
+                    .onResultOf(DataNode::getKey);
+
             node.setExpanded(true);
             childes = ordering.sortedCopy(childes);
             List<DataNode> childesList = new ArrayList<>();

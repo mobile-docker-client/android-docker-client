@@ -15,7 +15,7 @@ import ru.mail.park.docker.adapters.jsonView.DataNode;
 public class DataNodeMapper implements IDataNodeMapper {
 
     private final Gson gson;
-
+    private final static String noKey = "...";
     public DataNodeMapper(Gson gson) {
         this.gson = gson;
     }
@@ -48,7 +48,7 @@ public class DataNodeMapper implements IDataNodeMapper {
             JsonArray array = elem.getAsJsonArray();
             List<DataNode> arrayNodes = new ArrayList<>();
             for (JsonElement arrayEntry : array) {
-                DataNode node = jsonElemToDataNode(null, arrayEntry);
+                DataNode node = jsonElemToDataNode(noKey, arrayEntry);
                 if (node != null) {
                     arrayNodes.add(node);
                 }
@@ -56,7 +56,7 @@ public class DataNodeMapper implements IDataNodeMapper {
             if (arrayNodes.size() == 0) {
                 return null;
             }
-            return new DataNode(false,
+            return new DataNode(true,
                     false,
                     key,
                     null,
