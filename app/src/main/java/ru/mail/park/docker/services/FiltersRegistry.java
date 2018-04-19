@@ -6,6 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import ru.mail.park.docker.adapters.jsonView.DataNode;
 
+@SuppressWarnings("Guava")
 public class FiltersRegistry {
 
     private final ConcurrentHashMap<String, Predicate<DataNode>> filtersRegistry = new ConcurrentHashMap<>();

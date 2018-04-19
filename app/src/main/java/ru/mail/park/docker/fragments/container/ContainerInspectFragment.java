@@ -59,6 +59,7 @@ public class ContainerInspectFragment extends Fragment implements OnDataNodeRecy
 
     private volatile List<DataNode> mDataset;
 
+    @SuppressWarnings("Guava")
     private Predicate<DataNode> mDataFilter;
 
     public ContainerInspectFragment() {

@@ -5,6 +5,7 @@ import com.google.common.base.Function;
 import retrofit2.Call;
 import retrofit2.Response;
 
+@SuppressWarnings("Guava")
 public interface IAsyncTaskHandler {
 
     @SuppressWarnings("unused")

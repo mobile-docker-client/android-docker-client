@@ -13,6 +13,7 @@ import io.swagger.client.model.ContainerSummary;
 import retrofit2.Call;
 import retrofit2.Response;
 
+@SuppressWarnings("Guava")
 public class ContainersFragmentsDataProvider {
 
     private final ContainerApi service;

@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutorService;
 import retrofit2.Call;
 import retrofit2.Response;
 
+@SuppressWarnings("Guava")
 public class AsyncTaskHandler implements IAsyncTaskHandler {
     private final ExecutorService executorService;
 

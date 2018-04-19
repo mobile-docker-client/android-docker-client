@@ -58,6 +58,7 @@ public class ImagesInspectFragment extends Fragment implements OnDataNodeRecycle
 
     private volatile List<DataNode> mDataset;
 
+    @SuppressWarnings("Guava")
     private Predicate<DataNode> mDataFilter;
 
     public ImagesInspectFragment() {
